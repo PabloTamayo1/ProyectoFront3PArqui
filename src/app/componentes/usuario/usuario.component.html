@@ -1,0 +1,105 @@
+<div>
+  <h1>Usuarios</h1>
+
+  <form [formGroup]="newUsuarioRestForm" (ngSubmit)="createUsuarioRest()">
+    <mat-card>
+      <mat-card-content>
+        <!-- Formulario para REST -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput id="nombreRest" formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Correo Electrónico</mat-label>
+          <input
+            matInput
+            id="correoElectronicoRest"
+            type="email"
+            formControlName="correoElectronico"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Identificación</mat-label>
+          <input
+            matInput
+            id="numeroIdentificacionRest"
+            type="number"
+            formControlName="numeroIdentificacion"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresos Mensuales</mat-label>
+          <input
+            matInput
+            id="ingresosMensualesRest"
+            type="number"
+            formControlName="ingresosMensuales"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dirección</mat-label>
+          <input matInput id="direccionRest" formControlName="direccion" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Usuario (REST)
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+
+  <form [formGroup]="newUsuarioGraphQLForm" (ngSubmit)="createUsuarioGraphQL()">
+    <mat-card>
+      <mat-card-content>
+        <!-- Formulario para GraphQL -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput id="nombreGraphQL" formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Correo Electrónico</mat-label>
+          <input
+            matInput
+            id="correoElectronicoGraphQL"
+            type="email"
+            formControlName="correoElectronico"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Identificación</mat-label>
+          <input
+            matInput
+            id="numeroIdentificacionGraphQL"
+            type="number"
+            formControlName="numeroIdentificacion"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresos Mensuales</mat-label>
+          <input
+            matInput
+            id="ingresosMensualesGraphQL"
+            type="number"
+            formControlName="ingresosMensuales"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dirección</mat-label>
+          <input matInput id="direccionGraphQL" formControlName="direccion" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Usuario (GraphQL)
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

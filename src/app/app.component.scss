@@ -1,0 +1,60 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Ajusta la opacidad si es necesario */
+  z-index: 3; /* Asegúrate de que este valor sea mayor que el z-index del contenido */
+  transition: transform 0.3s ease-in-out;
+}
+
+.logout-button {
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; /* Asegúrate de que este valor sea menor que el z-index del menú lateral */
+}
+
+mat-sidenav-container {
+  margin-top: 64px; /* Ajusta este valor si el toolbar es más alto */
+}
+
+mat-sidenav-content {
+  padding: 16px;
+  background-color: #f5f5f5; /* Color temporal para depurar */
+}
+
+.main-content {
+  padding-top: 16px;
+}
+
+.mat-nav-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mat-nav-list a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .sidenav {
+    width: 200px;
+  }
+}

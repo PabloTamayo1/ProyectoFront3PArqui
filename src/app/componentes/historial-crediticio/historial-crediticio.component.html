@@ -1,0 +1,88 @@
+<div>
+  <h2>Historiales Crediticios</h2>
+
+  <!-- Buscador de Historiales -->
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar Historial</mat-label>
+    <mat-select (selectionChange)="obtenerHistorial($event.value)">
+      <mat-option *ngFor="let historial of historiales" [value]="historial.id">
+        {{ historial.id }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Tabla de Historiales -->
+  <mat-table [dataSource]="historiales">
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let historial"> {{ historial.nombre }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['nombre']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['nombre']"></mat-row>
+  </mat-table>
+
+  <!-- Botón para crear un nuevo historial -->
+  <button mat-raised-button color="primary" (click)="crearHistorial()">
+    Crear Historial
+  </button>
+
+  <!-- Formulario para crear un nuevo historial -->
+  <mat-card *ngIf="selectedHistorial === null">
+    <mat-card-content>
+      <form [formGroup]="newHistorialForm" (ngSubmit)="crearHistorial()">
+        <mat-form-field appearance="fill">
+          <mat-label>ID de Usuario</mat-label>
+          <input matInput formControlName="usuarioId" />
+          <mat-error
+            *ngIf="newHistorialForm.get('usuarioId')?.hasError('required')"
+          >
+            El ID de usuario es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha</mat-label>
+          <input matInput type="date" formControlName="fecha" />
+          <mat-error
+            *ngIf="newHistorialForm.get('fecha')?.hasError('required')"
+          >
+            La fecha es requerida
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Monto</mat-label>
+          <input matInput type="number" formControlName="monto" />
+          <mat-error
+            *ngIf="newHistorialForm.get('monto')?.hasError('required')"
+          >
+            El monto es requerido
+          </mat-error>
+          <mat-error *ngIf="newHistorialForm.get('monto')?.hasError('min')">
+            El monto debe ser mayor o igual a 0
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" />
+          <mat-error
+            *ngIf="newHistorialForm.get('estado')?.hasError('required')"
+          >
+            El estado es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="descripcion"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Historial
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

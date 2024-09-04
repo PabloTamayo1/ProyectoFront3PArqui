@@ -1,0 +1,128 @@
+<div>
+  <h1>Solicitudes de Crédito</h1>
+
+  <form [formGroup]="newSolicitudRestForm" (ngSubmit)="createSolicitudRest()">
+    <mat-card>
+      <mat-card-content>
+        <!-- Formulario para REST -->
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario ID</mat-label>
+          <input
+            matInput
+            id="usuarioIdRest"
+            type="number"
+            formControlName="usuarioId"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Monto Solicitado</mat-label>
+          <input
+            matInput
+            id="montoSolicitadoRest"
+            type="number"
+            formControlName="montoSolicitado"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha Solicitud</mat-label>
+          <input
+            matInput
+            id="fechaSolicitudRest"
+            type="date"
+            formControlName="fechaSolicitud"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <mat-select id="estadoRest" formControlName="estado">
+            <mat-option value="Pendiente">Pendiente</mat-option>
+            <mat-option value="Aprobado">Aprobado</mat-option>
+            <mat-option value="Rechazado">Rechazado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Puntaje Crediticio</mat-label>
+          <input
+            matInput
+            id="puntajeCrediticioRest"
+            type="number"
+            formControlName="puntajeCrediticio"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Solicitud (REST)
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+
+  <!-- Tabla de solicitudes aquí -->
+
+  <form
+    [formGroup]="newSolicitudGraphQLForm"
+    (ngSubmit)="createSolicitudGraphQL()"
+  >
+    <mat-card>
+      <mat-card-content>
+        <!-- Formulario para GraphQL -->
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario ID</mat-label>
+          <input
+            matInput
+            id="usuarioIdGraphQL"
+            type="number"
+            formControlName="usuarioId"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Monto Solicitado</mat-label>
+          <input
+            matInput
+            id="montoSolicitadoGraphQL"
+            type="number"
+            formControlName="montoSolicitado"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha Solicitud</mat-label>
+          <input
+            matInput
+            id="fechaSolicitudGraphQL"
+            type="date"
+            formControlName="fechaSolicitud"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <mat-select id="estadoGraphQL" formControlName="estado">
+            <mat-option value="Pendiente">Pendiente</mat-option>
+            <mat-option value="Aprobado">Aprobado</mat-option>
+            <mat-option value="Rechazado">Rechazado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Puntaje Crediticio</mat-label>
+          <input
+            matInput
+            id="puntajeCrediticioGraphQL"
+            type="number"
+            formControlName="puntajeCrediticio"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Solicitud (GraphQL)
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

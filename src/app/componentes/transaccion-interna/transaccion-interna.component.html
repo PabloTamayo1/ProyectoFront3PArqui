@@ -1,0 +1,20 @@
+<div>
+  <!-- Formulario para Crear una Nueva Transacción -->
+  <form [formGroup]="newTransaccionForm" (ngSubmit)="createTransaccion()">
+    <input formControlName="origen" placeholder="Cuenta Origen" />
+    <input formControlName="destino" placeholder="Cuenta Destino" />
+    <input formControlName="monto" type="number" placeholder="Monto" />
+    <input formControlName="fecha" type="date" placeholder="Fecha" />
+    <input formControlName="descripcion" placeholder="Descripción" />
+    <button type="submit">Crear Transacción</button>
+  </form>
+
+  <!-- Lista de Transacciones -->
+  <ul>
+    <li *ngFor="let transaccion of transacciones">
+      {{ transaccion.origen }} - {{ transaccion.destino }} -
+      {{ transaccion.monto }} - {{ transaccion.fecha | date : "shortDate" }} -
+      {{ transaccion.descripcion }}
+    </li>
+  </ul>
+</div>

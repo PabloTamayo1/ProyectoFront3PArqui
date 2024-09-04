@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.mat-sidenav-container {
+  height: 100vh;
+  overflow: hidden; /* Asegúrate de que el contenido no se desborde */
+}
+
+.mat-sidenav {
+  width: 250px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Ajusta la opacidad si es necesario */
+  z-index: 2; /* Asegúrate de que este valor sea mayor que el z-index del contenido */
+  transition: transform 0.3s ease-in-out;
+}
+
+.mat-sidenav-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5; /* Color temporal para depurar */
+}
+
+.mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3; /* Asegúrate de que este valor sea menor que el z-index del menú lateral */
+}

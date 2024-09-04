@@ -1,0 +1,18 @@
+<div>
+  <!-- Formulario para Crear un Nuevo Log -->
+  <form [formGroup]="newLogForm" (ngSubmit)="createLog()">
+    <input formControlName="usuarioId" placeholder="ID Usuario" />
+    <input formControlName="accion" placeholder="Acción" />
+    <input formControlName="descripcion" placeholder="Descripción" />
+    <input formControlName="fecha" type="date" placeholder="Fecha" />
+    <button type="submit">Crear Log</button>
+  </form>
+
+  <!-- Lista de Logs -->
+  <ul>
+    <li *ngFor="let log of logs">
+      {{ log.usuarioId }} - {{ log.accion }} - {{ log.descripcion }} -
+      {{ log.fecha | date : "shortDate" }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,89 @@
+<div>
+  <h2>Analistas de Crédito</h2>
+
+  <!-- Buscador de Analistas -->
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar Analista</mat-label>
+    <mat-select (selectionChange)="obtenerAnalista($event.value)">
+      <mat-option *ngFor="let analista of analistas" [value]="analista.id">
+        {{ analista.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Tabla de Analistas -->
+  <mat-table [dataSource]="analistas">
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let analista"> {{ analista.nombre }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['nombre']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['nombre']"></mat-row>
+  </mat-table>
+
+  <!-- Botón para crear un nuevo analista -->
+  <button mat-raised-button color="primary" (click)="crearAnalista()">
+    Crear Analista
+  </button>
+
+  <!-- Formulario para crear un nuevo analista -->
+  <mat-card *ngIf="selectedAnalista === null">
+    <mat-card-content>
+      <form [formGroup]="newAnalistaForm" (ngSubmit)="crearAnalista()">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+          <mat-error
+            *ngIf="newAnalistaForm.get('nombre')?.hasError('required')"
+          >
+            El nombre es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput type="email" formControlName="correoElectronico" />
+          <mat-error
+            *ngIf="
+              newAnalistaForm.get('correoElectronico')?.hasError('required')
+            "
+          >
+            El correo electrónico es requerido
+          </mat-error>
+          <mat-error
+            *ngIf="newAnalistaForm.get('correoElectronico')?.hasError('email')"
+          >
+            El correo electrónico no es válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="telefono" />
+          <mat-error
+            *ngIf="newAnalistaForm.get('telefono')?.hasError('required')"
+          >
+            El teléfono es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Contratación</mat-label>
+          <input matInput type="date" formControlName="fechaContratacion" />
+          <mat-error
+            *ngIf="
+              newAnalistaForm.get('fechaContratacion')?.hasError('required')
+            "
+          >
+            La fecha de contratación es requerida
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Crear Analista
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

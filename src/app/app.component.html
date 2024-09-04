@@ -1,0 +1,63 @@
+<!-- Mostrar barra de herramientas y menú solo si el usuario está autenticado -->
+<mat-toolbar color="primary" *ngIf="loginService.isLoggedIn()">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Sistema de Créditos</span>
+</mat-toolbar>
+
+<mat-sidenav-container
+  class="sidenav-container"
+  *ngIf="loginService.isLoggedIn()"
+>
+  <mat-sidenav #sidenav mode="over" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/analista-credito" (click)="sidenav.close()">
+        Analista Crédito
+      </a>
+      <a mat-list-item routerLink="/documento" (click)="sidenav.close()">
+        Documento
+      </a>
+      <a
+        mat-list-item
+        routerLink="/historial-crediticio"
+        (click)="sidenav.close()"
+      >
+        Historial Crediticio
+      </a>
+      <a mat-list-item routerLink="/log-actividad" (click)="sidenav.close()">
+        Log Actividad
+      </a>
+      <a
+        mat-list-item
+        routerLink="/solicitud-credito"
+        (click)="sidenav.close()"
+      >
+        Solicitud Crédito
+      </a>
+      <a
+        mat-list-item
+        routerLink="/transaccion-interna"
+        (click)="sidenav.close()"
+      >
+        Transacción Interna
+      </a>
+      <a mat-list-item routerLink="/usuario" (click)="sidenav.close()">
+        Usuario
+      </a>
+    </mat-nav-list>
+    <div class="logout-button">
+      <button mat-fab color="accent" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<router-outlet *ngIf="!loginService.isLoggedIn()"></router-outlet>
